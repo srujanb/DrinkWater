@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="show_notification"
+        android:title="Show Notifications2"
+        android:defaultValue="true"
+        android:summaryOn="You will be notified"
+        android:summaryOff="Why OFF when somebody worked so hard to make this for you!"
+        android:switchTextOff=":'("
+        android:switchTextOn=":D"
+        />
+    <SwitchPreference
+        android:key="show_notification2"
+        android:title="Show Notifications2"
+        android:defaultValue="true"
+        android:summaryOn="You will be notified"
+        android:summaryOff="Why OFF when somebody worked so hard to make this for you!"
+        android:switchTextOff=":'("
+        android:switchTextOn=":D"
+        />
+    <SwitchPreference
+        android:key="show_notification3"
+        android:title="Show Notifications2"
+        android:defaultValue="true"
+        android:summaryOn="You will be notified"
+        android:summaryOff="Why OFF when somebody worked so hard to make this for you!"
+        android:switchTextOff=":'("
+        android:switchTextOn=":D"
+        />
+    <SwitchPreference
+        android:key="show_notification4"
+        android:title="Show Notifications2"
+        android:defaultValue="true"
+        android:summaryOn="You will be notified"
+        android:summaryOff="Why OFF when somebody worked so hard to make this for you!"
+        android:switchTextOff=":'("
+        android:switchTextOn=":D"
+        />
+    <SwitchPreference
+        android:key="show_notification5"
+        android:title="Show Notifications2"
+        android:defaultValue="true"
+        android:summaryOn="You will be notified"
+        android:summaryOff="Why OFF when somebody worked so hard to make this for you!"
+        android:switchTextOff=":'("
+        android:switchTextOn=":D"
+        />
+    <SwitchPreference
+        android:key="show_notification6"
+        android:title="Show Notifications2"
+        android:defaultValue="true"
+        android:summaryOn="You will be notified"
+        android:summaryOff="Why OFF when somebody worked so hard to make this for you!"
+        android:switchTextOff=":'("
+        android:switchTextOn=":D"
+        />
+    <SwitchPreference
+        android:key="show_notification7"
+        android:title="Show Notifications"
+        android:defaultValue="true"
+        android:summaryOn="You will be notified"
+        android:summaryOff="Why OFF when somebody worked so hard to make this for you!"
+        android:switchTextOff=":'("
+        android:switchTextOn=":D"
+        />
+    <SwitchPreference
+        android:key="show_notification8"
+        android:title="Show Notifications"
+        android:defaultValue="true"
+        android:summaryOn="You will be notified"
+        android:summaryOff="Why OFF when somebody worked so hard to make this for you!"
+        android:switchTextOff=":'("
+        android:switchTextOn=":D"
+        />
+    <SwitchPreference
+        android:key="show_notification9"
+        android:title="Show Notifications"
+        android:defaultValue="true"
+        android:summaryOn="You will be notified"
+        android:summaryOff="Why OFF when somebody worked so hard to make this for you!"
+        android:switchTextOff=":'("
+        android:switchTextOn=":D"
+        />
+    <SwitchPreference
+        android:key="show_notification10"
+        android:title="Show Notifications"
+        android:defaultValue="true"
+        android:summaryOn="You will be notified"
+        android:summaryOff="Why OFF when somebody worked so hard to make this for you!"
+        android:switchTextOff=":'("
+        android:switchTextOn=":D"
+        />
+</PreferenceScreen>

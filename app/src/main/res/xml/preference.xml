@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Notifications">
+        <example.srujan.com.drinkwater.SwitchPreferenceCompat
+            android:key="show_notification"
+            android:title="Show Notifications"
+            android:defaultValue="true"
+            android:summaryOn="You will be notified"
+            android:summaryOff="You won't receive timely reminders."
+            android:switchTextOff="OFF"
+            android:switchTextOn="ON" />
+        <example.srujan.com.drinkwater.SwitchPreferenceCompat
+            android:key="notification_sound"
+            android:title="Sound"
+            android:defaultValue="true"
+            android:summary="Play sound on notifications"
+            android:dependency="show_notification"/>
+        <example.srujan.com.drinkwater.SwitchPreferenceCompat
+            android:key="notification_vibrate"
+            android:title="Vibrate"
+            android:summary="Vibrate on notification"
+            android:dependency="show_notification" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Do Not Disturb"
+        android:summary="Set when NOT to notify">
+        <example.srujan.com.drinkwater.SwitchPreferenceCompat
+            android:key="dnd_at_night"
+            android:title="DND at night"
+            android:defaultValue="true" />
+        <example.srujan.com.drinkwater.NumberPicker.NumberPickerPreferenceWaterTarget
+            android:key="sleep_time"
+            android:title="Bed time"
+            android:summary="Your time to go to sleep"
+            android:dependency="dnd_at_night"/>
+        <example.srujan.com.drinkwater.NumberPicker.NumberPickerPreferenceWaterTarget
+            android:key="wakeup_time"
+            android:title="Up time"
+            android:summary="Your time to wake up"
+            android:dependency="dnd_at_night" />
+        <example.srujan.com.drinkwater.SwitchPreferenceCompat
+            android:key="smart_notify"
+            android:title="Smart notify"
+            android:summary="Notify only if you are lagging behind"
+            android:dependency="dnd_at_night"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Personal Details">
+        <EditTextPreference
+            android:key="user_name"
+            android:title="Your name "
+            android:defaultValue="User"
+            android:summary=""/>
+        <example.srujan.com.drinkwater.NumberPicker.NumberPickerPreferenceWaterTarget
+            android:key="user_weight"
+            android:title="Your weight"
+            android:summary="KG"/>
+        <example.srujan.com.drinkwater.SwitchPreferenceCompat
+            android:key="default_target"
+            android:title="Default target"
+            android:summary="Default target: "
+            android:disableDependentsState="true"
+            android:defaultValue="true"/>
+        <example.srujan.com.drinkwater.NumberPicker.NumberPickerPreferenceWaterTarget
+            android:key="custom_target"
+            android:title="Target"
+            android:summary="Set your custom target"
+            android:dependency="default_target" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

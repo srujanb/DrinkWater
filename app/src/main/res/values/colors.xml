@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColorDefaultTheme">#795548</color>
+    <color name="primaryColorDarkDefaultTheme">#5D4037</color>
+    <color name="accentColorDefaultTheme">#FF5722</color>
+    <color name="accentColorDarkDefaultTheme">#E64A19</color>
+    <color name="primaryColorLightDefaultTheme">#d7ccc8</color>
+    <color name="primaryTextDefaultTheme">#212121</color>
+    <color name="secondaryTextDefaultTheme">#727272</color>
+    <color name="dividerColorDefaultTheme">#b6b6b6</color>
+
+    <color name="primaryColorPinkTheme">#df4d55</color>
+    <color name="primaryColorDarkPinkTheme">#c2185b</color>
+    <color name="accentColorPinkTheme">#448aff</color>
+    <color name="textPinkTheme">#ffffff</color>
+    <color name="primaryColorLightPinkTheme">#f8bb80</color>
+    <color name="primaryTextPinkTheme">#212121</color>
+    <color name="secondaryTextPinkTheme">#727272</color>
+    <color name="dividerColorPinkTheme">#b6b6b6</color>
+
+    <color name="primaryColorBlueTheme">#3F51B5</color>
+    <color name="primaryColorDarkBlueTheme">#303F9F</color>
+    <color name="accentColorBlueTheme">#e74c3c</color>
+    <color name="textBlueTheme">#ffffff</color>
+    <color name="primaryColorLightBlueTheme">#C5CAE9</color>
+    <color name="primaryTextBlueTheme">#212121</color>
+    <color name="secondaryTextBlueTheme">#727272</color>
+    <color name="dividerColorBlueTheme">#b6b6b6</color>
+
+    <color name="primaryColorBlueOrangeTheme">#3F51B5</color>
+    <color name="primaryColorDarkBlueOrangeTheme">#303F9F</color>
+    <color name="accentColorBlueOrangeTheme">#FF5722</color>
+    <color name="textBlueOrangeTheme">#ffffff</color>
+    <color name="primaryColorLightBlueOrangeTheme">#C5CAE9</color>
+    <color name="primaryTextBlueOrangeTheme">#212121</color>
+    <color name="secondaryTextBlueOrangeTheme">#727272</color>
+    <color name="dividerColorBlueOrangeTheme">#b6b6b6</color>
+
+    <color name="black_semi_transparent">#B2000000</color>
+    <color name="background">#e5e5e5</color>
+    <color name="half_black">#808080</color>
+    <color name="white">#fafafa</color>
+    <color name="white_pressed">#f1f1f1</color>
+    <color name="pink">#e91e63</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="blue_semi_transparent">#805677fc</color>
+    <color name="blue_semi_transparent_pressed">#80738ffe</color>
+    <color name="myYellow">#f2f200</color>
+</resources>

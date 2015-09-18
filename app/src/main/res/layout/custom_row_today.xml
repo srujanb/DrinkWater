@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:src="@drawable/glass" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/volume"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="16dp"
+                        android:text="100"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/volume"
+                        android:layout_toRightOf="@+id/volume"
+                        android:text=" ml"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="72dp"
+                        android:layout_marginTop="-2dp"
+                        app:cardBackgroundColor="#aa0000ff"
+                        android:elevation="2dp"
+                        app:cardElevation="0dp"
+                        app:cardCornerRadius="0dp"
+                        >
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingBottom="8dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingTop="16dp">
+
+                            <TextView
+                                android:id="@+id/timeText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Time"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="#ffffff" />
+
+                            <TextView
+                                android:id="@+id/time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12:30"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="#ffffff" />
+
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <ImageView
+                        android:id="@+id/deleteRow"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/deleteicon" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:height="@dimen/list_item_height"
+        android:background="#99000000"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/list_item_padding_sides"
+        android:paddingRight="@dimen/list_item_padding_sides"
+        android:visibility="gone"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/txt_delete"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_weight="2"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:hapticFeedbackEnabled="true"
+            android:padding="15dp"
+            android:text="deleted"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/txt_undo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="undo"
+            android:textColor="@color/myYellow" />
+
+    </LinearLayout>
+
+</FrameLayout>

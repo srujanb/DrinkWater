@@ -1,0 +1,50 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColorDefaultTheme</item>
+        <item name="colorPrimaryDark">@color/primaryColorDarkDefaultTheme</item>
+        <item name="colorAccent">@color/accentColorDefaultTheme</item>
+        <item name="android:textColorPrimary">@color/primaryTextDefaultTheme</item>
+        <item name="android:textColorSecondary">@color/secondaryTextDefaultTheme</item>
+        <item name="android:divider">@color/dividerColorDefaultTheme</item>
+    </style>
+    <style name="CustomThemePink" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColorPinkTheme</item>
+        <item name="colorPrimaryDark">@color/primaryColorDarkPinkTheme</item>
+        <item name="colorAccent">@color/accentColorPinkTheme</item>
+        <item name="android:textColorPrimary">@color/primaryTextPinkTheme</item>
+        <item name="android:textColorSecondary">@color/secondaryTextPinkTheme</item>
+        <item name="android:divider">@color/dividerColorPinkTheme</item>
+    </style>
+    <style name="CustomThemeBlue" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColorBlueTheme</item>
+        <item name="colorPrimaryDark">@color/primaryColorDarkBlueTheme</item>
+        <item name="colorAccent">@color/accentColorBlueTheme</item>
+        <item name="android:textColorPrimary">@color/primaryTextBlueTheme</item>
+        <item name="android:textColorSecondary">@color/secondaryTextBlueTheme</item>
+        <item name="android:divider">@color/dividerColorBlueTheme</item>
+    </style>
+    <style name="CustomBlueOrangeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColorBlueOrangeTheme</item>
+        <item name="colorPrimaryDark">@color/primaryColorDarkBlueOrangeTheme</item>
+        <item name="colorAccent">@color/accentColorBlueOrangeTheme</item>
+        <item name="android:textColorPrimary">@color/primaryTextBlueOrangeTheme</item>
+        <item name="android:textColorSecondary">@color/secondaryTextBlueOrangeTheme</item>
+        <item name="android:divider">@color/dividerColorBlueOrangeTheme</item>
+    </style>
+
+    <style name="CustomProgressBar" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/custom_progress_bar_horizontal</item>
+        <item name="android:minHeight">10dip</item>
+        <item name="android:maxHeight">20dip</item>
+    </style>
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+</resources>

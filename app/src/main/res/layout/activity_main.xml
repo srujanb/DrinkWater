@@ -1,6 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -34,18 +33,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:cardview="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/card_view1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:layout_margin="5dp"
-                cardview:cardCornerRadius="@dimen/cardViewCornerRadius"
+                android:padding="5dp"
                 cardview:cardBackgroundColor="#ffffff"
-                cardview:cardElevation="0dp"
-                >
+                cardview:cardCornerRadius="@dimen/cardViewCornerRadius"
+                cardview:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -56,22 +53,22 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="#aa0000ff"
+                        android:padding="8dp"
                         android:text="Today's status"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:padding="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:textColor="#ffffff"
-                        android:background="#aa0000ff"/>
+                        android:textColor="#ffffff" />
 
                     <ProgressBar
                         android:id="@+id/progress_bar"
+                        style="@style/CustomProgressBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/CustomProgressBar"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginBottom="32dp"
+                        android:layout_marginBottom="4dp"
                         android:layout_marginLeft="24dp"
                         android:layout_marginRight="24dp"
+                        android:layout_marginTop="32dp"
                         android:progress="0"
                         android:secondaryProgress="0" />
 
@@ -79,46 +76,191 @@
                         android:id="@+id/progressNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0%"
                         android:layout_marginLeft="16dp"
-                        android:textSize="24dp"/>
-
+                        android:text="0%"
+                        android:textAppearance="?android:textAppearanceSmall" />
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp">
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:baselineAligned="false">
 
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Consumed: " />
-                        <TextView
-                            android:id="@+id/waterConsumed"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:text="Water consumed: " />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativeAfterWaterconsumed"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1024"
-                            android:textSize="24dp"/>
-                        <TextView
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:background="#aa0000ff">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/waterConsumed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1024"
+                                    android:textAppearance="?android:textAppearanceSmall"
+                                    android:textColor="#ffffff" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="/"
+                                    android:textAppearance="?android:textAppearanceSmall"
+                                    android:textColor="#ffffff" />
+
+                                <TextView
+                                    android:id="@+id/waterTarget"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="2048"
+                                    android:textAppearance="?android:textAppearanceSmall"
+                                    android:textColor="#ffffff" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=" ml"
+                                    android:textAppearance="?android:textAppearanceSmall"
+                                    android:textColor="#ffffff" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:baselineAligned="false">
+
+                        <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" / "
-                            android:textSize="24dp"/>
-                        <TextView
-                            android:id="@+id/waterTarget"
+                            android:padding="0dp"
+                            android:layout_margin="0dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Rate of consumption:"
+                                android:gravity="start"
+                                android:padding="0dp"
+                                android:layout_margin="0dp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="2048"
-                            android:textSize="24dp" />
-                        <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="0dp"
+                            android:layout_margin="0dp"
+                            android:gravity="center"
+                            android:background="#aa0000ff">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="0dp"
+                                android:padding="0dp"
+                                android:gravity="center">
+
+
+                                <TextView
+                                    android:id="@+id/ComsumptionRate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="512"
+                                    android:textAppearance="?android:textAppearanceSmall"
+                                    android:textColor="#ffffff" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=" ml/hr "
+                                    android:textAppearance="?android:textAppearanceSmall"
+                                    android:textColor="#ffffff" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:baselineAligned="false">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="  ml"/>
+                            android:layout_weight="1"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="8dp"
+                                android:text="Expected consump'n by end of the day:"
+                                android:gravity="start"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#aa0000ff"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1500ml"
+                                android:textColor="#ffffff"/>
+
+                        </RelativeLayout>
 
                     </LinearLayout>
 
@@ -126,25 +268,33 @@
 
             </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:cardview="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/card_view2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                cardview:cardBackgroundColor="#FFFFFF"
-                android:padding="5dp"
                 android:layout_margin="5dp"
                 android:elevation="0dp"
+                android:padding="5dp"
+                cardview:cardBackgroundColor="#FFFFFF"
                 cardview:cardCornerRadius="0dp"
                 cardview:cardElevation="0dp">
 
 
                 <Button
+                    android:id="@+id/openchart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="linechart"/>
+                    android:onClick="linechart"
+                    android:text="Chart" />
 
+                <Button
+                    android:id="@+id/opengraph"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="linechart"
+                    android:text="my Graph" />
 
 
             </android.support.v7.widget.CardView>

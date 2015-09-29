@@ -10,7 +10,7 @@
     <color name="dividerColorDefaultTheme">#b6b6b6</color>
 
     <color name="primaryColorPinkTheme">#df4d55</color>
-    <color name="primaryColorDarkPinkTheme">#c2185b</color>
+    <color name="primaryColorDarkPinkTheme">#aaff0000</color>
     <color name="accentColorPinkTheme">#448aff</color>
     <color name="textPinkTheme">#ffffff</color>
     <color name="primaryColorLightPinkTheme">#f8bb80</color>

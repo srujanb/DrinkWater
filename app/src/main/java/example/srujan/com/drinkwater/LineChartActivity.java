@@ -63,7 +63,7 @@ public class LineChartActivity extends ActionBarActivity {
         private boolean isFilled = false;
         private boolean hasLabels = false;
         private boolean isCubic = false;
-        private boolean hasLabelForSelected = false;
+        private boolean hasLabelForSelected = true;
         private boolean pointsHaveDifferentColor;
 
         public PlaceholderFragment() {

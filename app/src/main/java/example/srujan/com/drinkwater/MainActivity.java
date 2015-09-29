@@ -6,12 +6,15 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -33,26 +36,32 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
-    int primaryProgress = 40;
+    int primaryProgress;
     int secondaryProgress = 60;
     int interval = 30;
-
     int waterConsumed = 0;
     int waterTarget = 10000;
     FileInputStream fis;
+    FileOutputStream fos;
 
     ProgressBar progressBar;
     TextView progressNumber;
     TextView percentage;
     Float xOfPercentage;
+    Calendar lastAppOpenedDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        getBaseContext().setTheme(R.style.CustomThemePink);
@@ -63,7 +72,15 @@ public class MainActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        //initStats();
+        Calendar now = Calendar.getInstance();
+                //new Date(System.currentTimeMillis());
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //SharedPreferences.Editor editor = preferences.edit();
+        lastAppOpenedDate.setTimeInMillis(preferences.getLong("lastAppOpenedDateLong",now.getTimeInMillis()));
+
+
+        if (!(lastAppOpenedDate.MINUTE == now.MINUTE))
+            newDay();
 //        toolbar.setBackgroundColor(getResources().getColor(R.color.primaryColorPinkTheme));
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         progressBar.setMax(100);
@@ -74,13 +91,23 @@ public class MainActivity extends ActionBarActivity {
         percentage = (TextView) findViewById(R.id.progressNumber);
         xOfPercentage = progressBar.getX();
 
-        //changeProgressBar();
-        //changeProgressBar2();
-
-
     }
 
-    private void initStats() {
+    private void newDay() {
+        List<DailyDetails> tempDD = new ArrayList<>();
+        int volume;
+
+        try {
+            fis = openFileInput("pastWeekData");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            tempDD = (List<DailyDetails>) ois.readObject();
+
+        }catch (Exception e){
+
+        }
+    }
+
+    private void initStats() throws Exception {
         waterConsumed = 0;
         List<InformationToday> data = new ArrayList<>();
         try{
@@ -94,16 +121,35 @@ public class MainActivity extends ActionBarActivity {
                 waterConsumed += data.get(i).value;
             }
         }catch (Exception e){
-            Toast.makeText(this,"initStats catch caught.",Toast.LENGTH_SHORT).show();;
+            Toast.makeText(this,"initStats catch caught.",Toast.LENGTH_SHORT).show();
         }
         primaryProgress = (int) (100*(waterConsumed/(float)waterTarget));
 
+        //TODO To remove.
+        //INIT last 7 days data.
+        List<DailyDetails> thisWeekData = new ArrayList<>();
+        for(int i = 0; i < 7; i++)
+        {
+            DailyDetails d = new DailyDetails();
+            d.volume = i*30;
+            thisWeekData.add(d);
+        }
+        fos = openFileOutput("pastWeekData", Context.MODE_PRIVATE);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(thisWeekData);
+        oos.close();
+        fos.close();
     }
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        initStats();
+        try {
+            initStats();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this,"caught in exception",Toast.LENGTH_SHORT).show();
+        }
         changeProgressBar();
         changeProgressBar2();
         //Toast.makeText(this,"main_act onResume called",Toast.LENGTH_SHORT).show();
@@ -212,7 +258,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void linechart(View view) {
-        Intent intent = new Intent(this,LineChartActivity.class);
-        startActivity(intent);
+        if(view.getId() == R.id.openchart) {
+            Intent intent = new Intent(this, LineChartActivity.class);
+            startActivity(intent);
+        }
+        else {
+            Intent intent = new Intent(this, Graph.class);
+            startActivity(intent);
+        }
     }
 }

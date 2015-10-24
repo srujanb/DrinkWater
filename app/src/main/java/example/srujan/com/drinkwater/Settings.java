@@ -1,10 +1,12 @@
 package example.srujan.com.drinkwater;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -42,6 +44,16 @@ public class Settings extends ActionBarActivity {
         addPreferencesFromResource(R.xml.preference);*/
     }
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this,"Back pressed",Toast.LENGTH_SHORT).show();
+        super.onBackPressed();
+        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(this);
+        int i = s.getInt("custom_target",0);
+        SharedPreferences.Editor editor = s.edit();
+        editor.putInt("customTargetValue",i*1000);
+        editor.apply();
+    }
 
     public static class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener{
 
@@ -52,20 +64,30 @@ public class Settings extends ActionBarActivity {
             addPreferencesFromResource(R.xml.preference);
 
             SwitchPreferenceCompat s = (SwitchPreferenceCompat) findPreference("default_target");
-            s.setChecked(true);
-            int l = 4;
-            s.setSummary("" + s.getSummary() + l + "L/DAY");
+            NumberPickerPreferenceWaterTarget s2 = (NumberPickerPreferenceWaterTarget) findPreference("custom_target");
+            int defaultTarget;
+            int customTarget;
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            defaultTarget = preferences.getInt("defaultTargetValue", 0);
+            customTarget = preferences.getInt("customTargetValue", 0);
+            if (s.isChecked()) {
+                s.setSummary("Default target: " + defaultTarget + " mL/DAY");
+                s2.setSummary("Disable default target to set custom target.");
+            } else {
+                s.setSummary("Touch to use Default target.");
+                s2.setSummary("Custom target: " + customTarget / 1000 + " L");
+            }
+            s2.setOnPreferenceChangeListener();
 
-            for(int x = 0; x < getPreferenceScreen().getPreferenceCount(); x++){
+            for (int x = 0; x < getPreferenceScreen().getPreferenceCount(); x++) {
                 PreferenceCategory lol = (PreferenceCategory) getPreferenceScreen().getPreference(x);
-                for(int y = 0; y < lol.getPreferenceCount(); y++){
+                for (int y = 0; y < lol.getPreferenceCount(); y++) {
                     Preference pref = lol.getPreference(y);
-                    pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener(){
+                    pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 
                         @Override
                         public boolean onPreferenceClick(Preference preference) {
-                            if (preference.getKey().equals("dnd_at_night"))
-                            {
+                            if (preference.getKey().equals("dnd_at_night")) {
 //                                Toast.makeText(getActivity(),"dnd at night",Toast.LENGTH_SHORT).show();
                                 Snackbar.make(getView(), "This is a snackbar", Snackbar.LENGTH_LONG).show();
                             }
@@ -77,6 +99,7 @@ public class Settings extends ActionBarActivity {
                 }
             }
         }
+
 
         @Override
         public boolean onPreferenceClick(Preference preference) {

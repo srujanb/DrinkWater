@@ -68,9 +68,11 @@
             android:defaultValue="true"/>
         <example.srujan.com.drinkwater.NumberPicker.NumberPickerPreferenceWaterTarget
             android:key="custom_target"
-            android:title="Target"
+            android:title="Custom target"
             android:summary="Set your custom target"
-            android:dependency="default_target" />
+            android:dependency="default_target"
+            android:defaultValue="5"
+            />
     </PreferenceCategory>
 
 

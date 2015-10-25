@@ -9,6 +9,7 @@ import java.util.Date;
  */
 public class DailyDetails implements Serializable {
     Calendar calendar;
+    int min;
     int volume;
     int target;
 }

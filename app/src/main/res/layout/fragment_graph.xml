@@ -15,7 +15,8 @@
     <lecho.lib.hellocharts.view.LineChartView
         android:id="@+id/graphView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:onClick="onClick">
     </lecho.lib.hellocharts.view.LineChartView>
 
 </RelativeLayout>

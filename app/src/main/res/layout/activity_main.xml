@@ -42,7 +42,8 @@
                 android:padding="5dp"
                 cardview:cardBackgroundColor="#ffffff"
                 cardview:cardCornerRadius="@dimen/cardViewCornerRadius"
-                cardview:cardElevation="0dp">
+                cardview:cardElevation="0dp"
+                android:onClick="onClick">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -88,9 +89,9 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="8dp"
+                        android:baselineAligned="false"
                         android:orientation="horizontal"
-                        android:weightSum="2"
-                        android:baselineAligned="false">
+                        android:weightSum="2">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -109,9 +110,9 @@
                             android:id="@+id/relativeAfterWaterconsumed"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
                             android:layout_weight="1"
-                            android:background="#aa0000ff">
+                            android:background="#aa0000ff"
+                            android:gravity="center">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -124,21 +125,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="1024"
-                                    android:textAppearance="?android:textAppearanceSmall"
-                                    android:textColor="#ffffff" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="/"
-                                    android:textAppearance="?android:textAppearanceSmall"
-                                    android:textColor="#ffffff" />
-
-                                <TextView
-                                    android:id="@+id/waterTarget"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="2048"
                                     android:textAppearance="?android:textAppearanceSmall"
                                     android:textColor="#ffffff" />
 
@@ -162,46 +148,46 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="8dp"
+                        android:baselineAligned="false"
                         android:orientation="horizontal"
-                        android:weightSum="2"
-                        android:baselineAligned="false">
+                        android:weightSum="2">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="0dp"
                             android:layout_margin="0dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:padding="0dp">
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Rate of consumption:"
+                                android:layout_margin="0dp"
                                 android:gravity="start"
                                 android:padding="0dp"
-                                android:layout_margin="0dp" />
+                                android:text="Rate of consumption:" />
 
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:padding="0dp"
                             android:layout_margin="0dp"
+                            android:layout_weight="1"
+                            android:background="#aa0000ff"
                             android:gravity="center"
-                            android:background="#aa0000ff">
+                            android:padding="0dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="0dp"
-                                android:padding="0dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:padding="0dp">
 
 
                                 <TextView
-                                    android:id="@+id/ComsumptionRate"
+                                    android:id="@+id/consumptionRate"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="512"
@@ -228,22 +214,21 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="8dp"
+                        android:baselineAligned="false"
                         android:orientation="horizontal"
-                        android:weightSum="2"
-                        android:baselineAligned="false">
+                        android:weightSum="2">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            >
+                            android:layout_weight="1">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:gravity="start"
                                 android:paddingRight="8dp"
-                                android:text="Expected consump'n by end of the day:"
-                                android:gravity="start"/>
+                                android:text="Expected today:" />
 
                         </RelativeLayout>
 
@@ -254,15 +239,74 @@
                             android:background="#aa0000ff"
                             android:gravity="center">
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="1500ml"
-                                android:textColor="#ffffff"/>
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/expectedConsumption"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1500"
+                                    android:textColor="#ffffff" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=" ml"
+                                    android:textColor="#ffffff" />
+
+                            </LinearLayout>
 
                         </RelativeLayout>
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:cardview="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_graph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:elevation="0dp"
+                android:onClick="onClick"
+                android:padding="5dp"
+                cardview:cardBackgroundColor="#FFFFFF"
+                cardview:cardCornerRadius="0dp"
+                cardview:cardElevation="0dp">
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_graph"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="0dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="#aa0000ff"
+                        android:padding="8dp"
+                        android:text="Last 7 days"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#ffffff" />
+
+                    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:id="@+id/graphContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_above="@+id/threebuttons"
+                        android:layout_below="@id/app_bar"
+                        tools:context="lecho.lib.hellocharts.samples.LineChartActivity"
+                        tools:ignore="MergeRootFrame" />
 
                 </LinearLayout>
 

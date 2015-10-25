@@ -148,7 +148,7 @@ public class MainActivity extends ActionBarActivity {
             tempList.add(0,d);
         }
         try{
-            fos = openFileOutput("pastWeekData",Context.MODE_PRIVATE);
+            fos = openFileOutput("pastWeekData", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(tempList);
             oos.close();
@@ -171,6 +171,7 @@ public class MainActivity extends ActionBarActivity {
 
         //Get total water consumed.
         List<InformationToday> data = new ArrayList<>();
+        DailyDetails dailyDetails = new DailyDetails();
         try{
             fis = openFileInput("arrayListToday");
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -178,6 +179,7 @@ public class MainActivity extends ActionBarActivity {
             ois.close();
             fis.close();
         }catch (Exception e){
+            waterConsumed = 0;
             e.printStackTrace();
         }
         waterConsumed = getTotalWaterConsumed(data);
@@ -192,8 +194,9 @@ public class MainActivity extends ActionBarActivity {
             fis.close();
             Toast.makeText(this,"PastWeekData found.",Toast.LENGTH_SHORT).show();
             //TODO change minute to day.
+            int temp = 0;
             while(lastAppOpenedDate.get(Calendar.MINUTE) != now.get(Calendar.MINUTE)) {
-                DailyDetails dailyDetails = new DailyDetails();
+
                 dailyDetails.volume = waterConsumed;
                 preferences = PreferenceManager.getDefaultSharedPreferences(this);
                 if(preferences.getBoolean("default_target",true))
@@ -201,14 +204,24 @@ public class MainActivity extends ActionBarActivity {
                 else
                     dailyDetails.target = preferences.getInt("customTargetValue",4000);
                 dailyDetails.calendar = lastAppOpenedDate;
-//                Toast.makeText(this,"lastOpenedDate: " + lastAppOpenedDate.get(Calendar.MINUTE),Toast.LENGTH_SHORT).show();
+//                dailyDetails.min = lastAppOpenedDate.get(Calendar.MINUTE);
+                dailyDetails.min = temp;
+                Log.d("TAG A", "1.While loop : " + lastAppOpenedDate.get(Calendar.MINUTE) + "," + dailyDetails.calendar.get(Calendar.MINUTE) + "," + now.get(Calendar.MINUTE));
+//                Toast.makeText(this,"lastOpenedDate: " + lastAppOpenedDate.get(Calendar.MINUTE) + "," + dailyDetails.calendar.get(Calendar.MINUTE),Toast.LENGTH_SHORT).show();
                 tempDD.add(tempDD.size(), dailyDetails);
+                Log.d("TAG A", "2." + tempDD.get(tempDD.size() - 1).min);
                 if(tempDD.size() > 30 || tempDD.get(0).calendar == tempDD.get(1).calendar)
                     tempDD.remove(0);
                 //TODO change minute to day
                 lastAppOpenedDate.add(Calendar.MINUTE, 1);
+                temp++;
                 waterConsumed = 0;
             }
+            String s = "";
+            for(int i = 0; i < tempDD.size();i++){
+                s = s + tempDD.get(i).calendar.get(Calendar.MINUTE)+ "(" + tempDD.get(i).min +")" + ",";
+            }
+            Log.d("TAG A","3."+s);
             fos = openFileOutput("arrayListToday",MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             List <InformationToday> dataToBeRemoved = new ArrayList<>();
@@ -226,6 +239,8 @@ public class MainActivity extends ActionBarActivity {
             {
                 DailyDetails d = new DailyDetails();
                 d.volume = 0;
+                d.target = 0;
+                d.calendar = now;
                 tempDD.add(d);
             }
         }
@@ -238,9 +253,10 @@ public class MainActivity extends ActionBarActivity {
             fos.close();
         }catch (Exception e){
             e.printStackTrace();
-//            Toast.makeText(this,"Exception generated in saving tempDD",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Exception generated in saving tempDD",Toast.LENGTH_SHORT).show();
         }
         //Check if thisWeekData was saved properly
+        /*
         try{
             fis = openFileInput("pastWeekData");
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -251,7 +267,7 @@ public class MainActivity extends ActionBarActivity {
 //            Toast.makeText(this,"In test code (MainActivity) size of array list is: " + d.size(),Toast.LENGTH_SHORT).show();
         }catch (Exception ex){
             ex.printStackTrace();
-        }
+        }*/
     }
 
     private void initStats() throws Exception {
@@ -301,7 +317,7 @@ public class MainActivity extends ActionBarActivity {
         int expCon = 0;
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
-        expCon = ((waterConsumed/hour)*24);
+        expCon = ((waterConsumed/(hour+1))*24);
         return expCon;
     }
 

@@ -75,7 +75,7 @@ public class TodaysStatus extends ActionBarActivity {
 //        Calendar calendar = Calendar.getInstance();
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        consumptioRate = (int)(waterConsumed / hour);
+        consumptioRate = (int)(waterConsumed / (hour + 1));
         textView = (TextView) findViewById(R.id.consumptionRate);
         textView.setText("" + consumptioRate);
 
@@ -103,15 +103,15 @@ public class TodaysStatus extends ActionBarActivity {
         textView.setText("" + lastWeekAverage);
 
         textView = (TextView) findViewById(R.id.improvement);
-        try {
+        if(lastWeekAverage != 0) {
             improvement = (int) (((expectedToday - lastWeekAverage) / (float)lastWeekAverage) * 100);
             textView.setText("" + improvement + "%");
-        }catch (Exception e){
+        }else {
             textView.setText("-");
         }
         if (thisWeekData.get(0).calendar == thisWeekData.get(1).calendar) {
             textView.setText("Data insufficient");
-//            Toast.makeText(this,thisWeekData.get(0).calendar.get(Calendar.MINUTE) + "," + thisWeekData.get(1).calendar.get(Calendar.MINUTE),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,thisWeekData.get(0).calendar.get(Calendar.MINUTE) + "," + thisWeekData.get(1).calendar.get(Calendar.MINUTE) + "," + thisWeekData.size(),Toast.LENGTH_SHORT).show();
         }
 
     }

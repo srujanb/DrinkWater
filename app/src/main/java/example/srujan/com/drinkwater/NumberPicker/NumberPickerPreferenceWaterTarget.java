@@ -58,7 +58,7 @@ public class NumberPickerPreferenceWaterTarget extends DialogPreference {
     }
 
     @Override
-    protected void onDialogClosed(boolean positiveResult) {
+    public void onDialogClosed(boolean positiveResult) {
         if (positiveResult) {
             int newValue = picker.getValue();
             if (callChangeListener(newValue)) {
@@ -92,5 +92,10 @@ public class NumberPickerPreferenceWaterTarget extends DialogPreference {
 
     public void setMax(int max) {
         this.MAX_VALUE = max;
+    }
+
+
+    public void setOnPreferenceChangeListener() {
+
     }
 }
